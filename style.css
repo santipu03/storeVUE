@@ -1,0 +1,219 @@
+/* Base Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background: #2b2b2b;
+    color: #f3f3f3;
+    min-height: 100vh;
+}
+
+#app {
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #e74c3c;
+}
+
+h3, h4 {
+    text-align: center;
+    font-size: 1.4em;
+    margin-bottom: 20px;
+}
+
+.index-container button {
+    margin: auto;
+}
+
+
+/* Movie Styles */
+.movies-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+}
+
+/* Individual Movie Card */
+.movies-container > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
+}
+
+.content-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+.cart-summary {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cart-summary-movie {
+    display: flex;
+    gap: 25px;
+}
+
+.cart-movie-btn-container {
+    margin-left: auto;
+}
+
+
+img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+h5 {
+    text-align: center;
+    color: green;
+}
+
+.movie-title {
+    margin-top: 0.75rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.movie-price {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+    color: #2c3e50;
+}
+
+.movie-total-price {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+    text-align: center;
+    color: #fff;
+    margin-left: auto;
+}
+
+/* Button Styles */
+.btn-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #e74c3c;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    /* margin: auto; */
+}
+
+button:hover {
+    background-color: #c0392b;
+}
+
+input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+
+.movie-btn-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #2c3e50;
+}
+
+.movie-btn-container button {
+    background-color: #444;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+.checkout-btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+}
+
+.checkout-movie-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.checkout {
+    width: 80%;
+    margin: auto;
+}
+
+.checkout-movie {
+    display: flex;
+    align-items: center;
+    border: 2px solid #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    gap: 40px;
+}
+
+.checkout-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 30px;
+}
+
+.checkout-form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.checkout-form-container > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#clear-form-btn {
+    font-size: 0.8rem;
+    width: 45%;
+    margin: auto;
+    font-weight: normal;
+    padding: 10px 15px;
+}
+
+.green-btn {
+    background-color: rgb(53, 132, 53);
+}
+
+.green-btn:hover {
+    background-color: rgb(47, 105, 11);
+}
+
+.movie-quantity, .movie-total-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+}

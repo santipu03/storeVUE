@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Club</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="app">
+        <h1>Movie Club</h1>
+        <div v-if="show('start')" class="index-container">
+            <h3>Enjoy the best movies!</h3>
+            <button @click="setScreen('store')" class="green-btn">Shop</button>
+        </div>
+        <div v-if="show('store')">
+            <div v-if="getMovies().length > 0">
+                <div class="content-container">
+                    <div class="movies-container">
+                        <div v-for="(movie, index) in movies" :index="index">
+                            <div class="img-container">
+                                <img :src="movie.Poster" alt="img">
+                            </div>
+                            <div class="movie-title">{{ movie.Title }}</div>
+                            <div class="movie-price">{{ movie.price }} €</div>
+                            <div class="movie-btn-container">
+                                <button @click="removeMovieFromCart(movie.imdbID)">-</button>
+                                <div class="movie-quantity">{{ movie.quantity }}</div>
+                                <button @click="addMovieToCart(movie.imdbID)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart-summary">
+                        <div v-for="(movie, index) in getCart()" :index="index" class="cart-summary-movie">
+                            <div class="cart-movie-title">{{ movie.Title }}</div>
+                            <div class="cart-movie-price">{{ movie.price }} €</div>
+                            <div class="cart-movie-btn-container">
+                                <div>X {{ movie.quantity }}</div>
+                            </div>
+                        </div>
+                        <h4>Total: {{ getCartPrice() }} €</h4>
+                        <button class="green-btn" @click="setScreen('checkout')">Checkout</button>
+                    </div>
+                </div>
+                    <div class="btn-container">
+                    <button @click="setScreen('start')">Index</button>
+                </div>
+            </div>
+        </div>
+        <div v-if="show('checkout')" class="checkout">
+            <h3>This is your order:</h3>
+            <div v-if="getCart().length == 0">
+                There's no movies in the cart...
+            </div>
+            <div class="checkout-container">
+
+                <div class="checkout-movie-container">
+                    <div v-for="(movie, index) in getCart()" :index="index" class="checkout-movie">
+                        <div class="checkout-movie-title">{{ movie.Title }}</div>
+                        <div class="checkout-movie-price">{{ movie.price }} €</div>
+                        <div class="checkout-movie-btn-container">
+                            <div>X {{ movie.quantity }}</div>
+                        </div>
+                        <div class="movie-total-price">{{ getTotalProductPrice(movie.imdbID) }} €</div>
+                    </div>
+                </div>
+
+                <div class="checkout-form-container">
+                    <h4>User Data</h4>
+                    <div>
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" autocomplete="off" v-model="userData.name">
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" autocomplete="off" v-model="userData.email">
+                    </div>
+                    <button @click="clearUserData()" id="clear-form-btn">Clear form</button>
+                </div>
+            </div>
+            <h3>The total amount to pay is {{ getCartPrice() }} €</h3>
+            
+            <div class="checkout-btn-container">
+                <button @click="setScreen('store')">Back To Shop</button>
+                <button @click="proceedToPay()" class="green-btn">Pay</button>
+            </div>
+            <h5>{{ payMsg }}</h5>
+        </div>
+
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
