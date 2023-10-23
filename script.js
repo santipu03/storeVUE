@@ -27,7 +27,7 @@ createApp({
                 console.log('storage full')
                 console.log(moviesInStorage)
             } else {
-                let response = await fetch('http://www.omdbapi.com/?apikey=bd935145&s=war')
+                let response = await fetch('https://www.omdbapi.com/?apikey=bd935145&s=war')
                 let jsonData = (await response.json())
                 this.setMovies(jsonData.Search, true)
             }
